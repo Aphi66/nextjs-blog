@@ -9,70 +9,66 @@ import Link from 'next/link';
 const name = '[Aphichit Sonchan]';
 export const siteTitle = 'Next.js Sample Website';
 
-export default function Layout({ children, home }) {
+export default function Resume() {
   return (
-    <div className={styles.container}>
+    <Layout>
       <Head>
-        <link rel="icon" href="/favicon.ico" />
-        <meta
-          name="description"
-          content="Learn how to build a personal website using Next.js"
-        />
-        <meta
-          property="og:image"
-          content={`https://og-image.vercel.app/${encodeURI(
-            siteTitle,
-          )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.zeit.co%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
-        />
-        <meta name="og:title" content={siteTitle} />
-        <meta name="twitter:card" content="summary_large_image" />
+        <title>Resume - {name}</title>
       </Head>
-      <Script
-        src="https://connect.facebook.net/en_US/sdk.js"
-        strategy="lazyOnload"
-        onLoad={() =>
-          console.log(`script loaded correctly, window.FB has been populated`)
-        }
-      />
-      <header className={styles.header}>
-        {home ? (
-          <>
-            <Image
-              priority
-              src="/images/profile.jpg"
-              className={utilStyles.borderCircle}
-              height={144}
-              width={144}
-              alt={name}
-            />
-            <h1 className={utilStyles.heading2Xl}>{name}</h1>
-          </>
-        ) : (
-          <>
-            <Link href="/">
-              <Image
-                priority
-                src="/images/profile.jpg"
-                className={utilStyles.borderCircle}
-                height={108}
-                width={108}
-                alt={name}
-              />
-            </Link>
-            <h2 className={utilStyles.headingLg}>
-              <Link href="/" className={utilStyles.colorInherit}>
-                {name}
-              </Link>
-            </h2>
-          </>
-        )}
-      </header>
-      <main>{children}</main>
-      {!home && (
-        <div className={styles.backToHome}>
-          <Link href="/">← Back to home</Link>
-        </div>
-      )}
-    </div>
+      <section className={styles.resume}>
+        <header className={styles.header}>
+          <Image
+            src="/images/profile.jpg"
+            className={utilStyles.borderCircle}
+            height={144}
+            width={144}
+            alt={name}
+          />
+          <h1 className={utilStyles.heading2Xl}>{name}</h1>
+          <h2 className={styles.position}>{position}</h2>
+          <p className={styles.summary}>{summary}</p>
+        </header>
+
+        <main className={styles.main}>
+          <section>
+            <h3 className={utilStyles.headingMd}>Experience</h3>
+            <ul className={styles.list}>
+              <li>
+                <strong>Senior Developer</strong> - HealthTech Innovations (2020–Present)
+                <p>
+                  Led the development of a Personal Health Management Platform using modern frameworks like React and Node.js.
+                </p>
+              </li>
+              <li>
+                <strong>Software Engineer</strong> - XYZ Solutions (2017–2020)
+                <p>
+                  Contributed to the design and implementation of scalable e-commerce systems, improving performance by 30%.
+                </p>
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            <h3 className={utilStyles.headingMd}>Education</h3>
+            <ul className={styles.list}>
+              <li>
+                <strong>Bachelor of Computer Science</strong> - ABC University (2013–2017)
+                <p>Graduated with Honors, focusing on software development and data analytics.</p>
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            <h3 className={utilStyles.headingMd}>Skills</h3>
+            <ul className={styles.skills}>
+              <li>JavaScript (React, Next.js, Node.js)</li>
+              <li>Python (Django, Flask)</li>
+              <li>Database Management (SQL, MongoDB)</li>
+              <li>Cloud Platforms (AWS, GCP)</li>
+            </ul>
+          </section>
+        </main>
+      </section>
+    </Layout>
   );
 }
