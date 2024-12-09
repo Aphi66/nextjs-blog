@@ -9,7 +9,9 @@ import Link from 'next/link';
 const name = '[Aphichit Sonchan]';
 export const siteTitle = 'Next.js Sample Website';
 
-export default function Resume() {
+
+
+export default function Layout() {
   return (
     <Layout>
       <Head>
